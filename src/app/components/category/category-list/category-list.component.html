@@ -1,0 +1,37 @@
+<app-header-admin> </app-header-admin>
+
+<!-- Page Content List Categories-->
+<div class="container">
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">
+        Spring eCommerce <small>Categorias</small>
+    </h1>
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="">Home</a></li>
+        <li class="breadcrumb-item active">Ver Categorías</li>
+    </ol>
+
+    <a class="btn btn-primary" routerLink="/admin/category/add"> Crear Categoría</a>
+    <h2>Categorías</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody *ngFor = "let c of categories">
+            <tr>
+                <td>{{c.name }}</td>                
+                <td><button class="btn btn-warning" [routerLink]="['/admin/category/update', c.id]" >Editar</button> </td>
+                <td><button class="btn btn-danger" (click)="deleteCategoryById(c.id)">Eliminar</button>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+<!-- /.container -->
+
+

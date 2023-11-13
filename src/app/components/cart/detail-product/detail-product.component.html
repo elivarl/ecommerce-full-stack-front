@@ -1,0 +1,50 @@
+<app-header-user></app-header-user>
+
+<!-- Page Content -->
+<div class="container">
+
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">
+      Spring eCommerce <small>Producto</small>
+    </h1>
+
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+      <li class="breadcrumb-item active">Producto</li>
+    </ol>
+
+    <!-- Blog Post -->
+    <div class="card mb-4">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-lg-6">
+            <a href="#"> <img class="img-fluid rounded"
+              src="{{urlImage}}"  alt="">
+            </a>
+          </div>
+          <div class="col-lg-6">
+            <form action="#" method="POST">
+              <h2 class="card-title">{{name}}</h2>
+
+              <ul class="list-group">
+                <li class="list-group-item"><h5>Precio: {{price}}</h5></li>
+                <li class="list-group-item">
+                  <p>Descripción: {{description}}</p>
+                </li>
+                <li class="list-group-item"><h6>
+                  Cantidad: <input type="number"  [(ngModel)]="quantity" id="quantity" name="quantity" autocomplete="off"
+                  min="1" max="5" value="1">
+                </h6></li>
+              </ul>
+
+
+              <button (click)="addCart(id)"  class="btn btn-dark">Añadir al carrito </button>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- /.container -->

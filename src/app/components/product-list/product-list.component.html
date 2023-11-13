@@ -1,0 +1,40 @@
+<app-header-admin> </app-header-admin>
+
+        <!-- Page Content List Products-->
+        <div class="container">
+            <!-- Page Heading/Breadcrumbs -->
+            <h1 class="mt-4 mb-3">
+                Spring eCommerce <small>Productos</small>
+            </h1>
+        
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a routerLink="">Home</a></li>
+                <li class="breadcrumb-item active">Ver Productos</li>
+            </ol>
+        
+            <a class="btn btn-primary" routerLink="/admin/product/addproduct" > Crear Producto</a>
+            <h2>Productos</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Precio</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let producto of products">
+                    <tr>
+                        <td>{{producto.code}}</td>
+                        <td>{{producto.name}}</td>
+                        <td>{{producto.description}}</td>
+                        <td>{{producto.price}}</td>
+                        <td><button class="btn btn-warning" [routerLink]="['/admin/product/update', producto.id]">Editar</button> </td>
+                        <td><button class="btn btn-danger" (click)="deleteProductById(producto.id)" >Eliminar</button>
+                    </tr>
+                </tbody>
+            </table>        
+        </div>
+

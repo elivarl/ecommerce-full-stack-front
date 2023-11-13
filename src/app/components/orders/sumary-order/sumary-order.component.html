@@ -1,0 +1,70 @@
+<!-- Header User-->
+<app-header-user></app-header-user>
+
+<!-- Page Content -->
+<div class="container">
+
+  <!-- Page Heading/Breadcrumbs -->
+  <h1 class="mt-4 mb-3">
+    Spring eCommerce <small>Resumen de la orden</small>
+  </h1>
+
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a [routerLink]="['/']">Home</a></li>
+    <li class="breadcrumb-item active">Orden</li>
+  </ol>
+
+  <!-- Blog Post -->
+  <div class="card mb-4">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-lg-9">
+          <div class="card-body">
+            <h5 class="card-title">
+              DATOS ORDEN
+            </h5>
+            <h6><strong> Nombre: </strong> {{firstName}}  {{lastName}}</h6>
+            <h6><strong>Correo: </strong> {{email}}  </h6>
+            <h6><strong> Dirección: </strong> {{address}}</h6>
+
+            <h5 class="card-title">
+              PRODUCTOS
+            </h5>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Producto</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Total</th>
+                    <th>Eliminar</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of items">
+                    <td>{{item.productName}}</td>
+                    <td>{{item.price}}</td>
+                    <td>{{item.quantity}}</td>
+                    <td>{{item.getTotalPriceItem()}}</td>
+                    <td><button class="btn btn-danger" (click)="deleteItemCart(item.productId)" >Quitar</button> </td>
+                  </tr>
+                </tbody>
+              </table>
+          </div>
+        </div>
+
+
+        <div class="col-lg-3">
+          <h2 class="card-title">Resumen Orden</h2>
+          <ul class="list-group">
+            <li class="list-group-item">
+              <h5> Total: {{totalCart}}</h5>
+            </li>
+            <a class="btn btn-dark" (click)="generateOrder()">Pagar con Paypal</a>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /.container -->

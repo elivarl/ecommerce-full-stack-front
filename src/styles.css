@@ -1,1 +1,55 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import 'ngx-toastr/toastr';
+
+body {
+    padding-top: 56px;
+  }
+
+
+
+ .product-box img {
+  width: 250px;
+  padding-bottom: 50px;
+}
+
+.product-show{
+  padding-bottom: 20px;
+}
+
+a.primary-btn:hover{
+  background:#0da8e4;
+  color:#fff
+}
+
+.price{
+  margin:15px 0 0;
+  font-weight:800;
+  color:#0da8e4
+}
+
+.product-box h2{
+  font-size:18px;
+  padding-bottom:0;
+  font-weight:500;
+  color:#585858
+}
+
+/* 
+ * ----------------------------
+ * Footer
+ * ----------------------------
+ */
+
+
+.footer{
+  padding-top: 25px;
+  padding-bottom: 50px;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+  color: white;
+  text-align: center;
+  
+}
