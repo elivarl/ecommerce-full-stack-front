@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { DataPayment } from 'src/app/common/data-payment';
 import { ItemCart } from 'src/app/common/item-cart';
 import { Order } from 'src/app/common/order';
 import { OrderProduct } from 'src/app/common/order-product';
 import { OrderState } from 'src/app/common/order-state';
 import { CartService } from 'src/app/services/cart.service';
 import { OrderService } from 'src/app/services/order.service';
+import { PaymentService } from 'src/app/services/payment.service';
+import { SessionStorageService } from 'src/app/services/session-storage.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -23,7 +26,12 @@ export class SumaryOrderComponent implements OnInit {
   orderProducts:OrderProduct [] = [];
   userId : number =1;
 
-  constructor(private cartService:CartService, private userService:UserService, private orderService:OrderService){}
+  constructor(private cartService:CartService, 
+    private userService:UserService, 
+    private orderService:OrderService, 
+    private paymentService:PaymentService,
+    private sessionStorage:SessionStorageService
+    ){}
 
 
   ngOnInit(): void {
@@ -46,8 +54,25 @@ export class SumaryOrderComponent implements OnInit {
     this.orderService.createOrder(order).subscribe(
       data => {
         console.log('Order creada con id: '+ data.id);
+        this.sessionStorage.setItem('order',data);
       }
     );
+
+    //redireccion y pago con paypal
+    let urlPayment;
+    let dataPayment = new DataPayment ('PAYPAL', this.totalCart.toString(), 'USD', 'COMPRA');
+
+    console.log('Data Payment:', dataPayment);
+
+    this.paymentService.getUrlPaypalPayment(dataPayment).subscribe(
+      data => {
+        urlPayment = data.url;
+        console.log('Respuesta exitosa...');
+        window.location.href = urlPayment;
+      }    
+    );
+
+
 
   }
 
