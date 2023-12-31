@@ -1,0 +1,56 @@
+<!-- Header User-->
+<app-header-user></app-header-user> 
+ 
+ <!-- Page Content -->
+ <div class="container">
+
+    <div class="card mb-3">
+      <div class="row no-gutters">
+        <div class="col-md-4"></div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h2>Registro</h2>
+
+          </div>
+        </div>
+      </div>
+    </div>
+	<form (ngSubmit)="register()">
+      <div class="form-group">
+        <label for="name">Nombre:</label> <input [(ngModel)]="name" type="text"
+          class="form-control" id="name" name="name"
+          placeholder="Ingrese su nombre" autocomplete="off">
+      </div>
+	  
+	   <div class="form-group">
+        <label for="surname">Apellido:</label> <input [(ngModel)]="surname" type="text"
+          class="form-control" id="surname" name="surname"
+          placeholder="Ingrese su Apellido" autocomplete="off">
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email:</label> <input [(ngModel)]="email" type="email"
+          class="form-control" id="email" name="email"
+          placeholder="Ingrese su email" autocomplete="off">
+      </div>
+
+      <div class="form-group">
+        <label for="address">Dirección:</label> <input [(ngModel)]="address" type="text"
+          class="form-control" id="address" name="address"
+          placeholder="Ingrese su dirección" autocomplete="off">
+      </div>
+	   <div class="form-group">
+        <label for="cellphone">Teléfono:</label> <input [(ngModel)]="cellphone" type="text"
+          class="form-control" id="cellphone" name="cellphone"
+          placeholder="Ingrese su teléfono" autocomplete="off">
+      </div>
+
+      <div class="form-group">
+        <label for="password">Contraseña</label> <input [(ngModel)]="password"  type="password"
+          class="form-control" id="password" name="password" placeholder="Ingrese su contraseña" autocomplete="off">
+      </div>
+      <div class="col-sm-2">
+        <button type="submit" class="btn btn-success">Guardar</button>
+      </div>
+    </form>
+  </div>

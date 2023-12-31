@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Category } from 'src/app/common/category';
 import { CategoryService } from 'src/app/services/category.service';
 import { ProductService } from 'src/app/services/product.service';
+import { SessionStorageService } from 'src/app/services/session-storage.service';
 
 @Component({
   selector: 'app-product-add',
@@ -17,20 +18,28 @@ export class ProductAddComponent implements OnInit{
   description : string = '';
   price : number = 0;
   urlImage : string = '';
-  userId : string = '1';
+  userId : string = '0';
   categoryId : string = '3';
+  user : number = 0;
 
   selectFile! : File;
 
   categories : Category [] = [];
 
-  constructor(private productService : ProductService, private router:Router, private activatedRoute:ActivatedRoute, private toastr: ToastrService, private categoryService:CategoryService){
+  constructor(private productService : ProductService, 
+    private router:Router, 
+    private activatedRoute:ActivatedRoute, 
+    private toastr: ToastrService, 
+    private categoryService:CategoryService,
+    private sessionStorage : SessionStorageService){
 
   }
 
   ngOnInit(): void {
     this.getCategories();
     this.getProductById();
+    this.user = this.sessionStorage.getItem('token').id;
+    this.userId = this.user.toString();
   }
   addProduct(){
     const formData = new FormData();
@@ -43,6 +52,7 @@ export class ProductAddComponent implements OnInit{
     formData.append('urlImage', this.urlImage);
     formData.append('userId', this.userId);
     formData.append('categoryId', this.categoryId);
+    //console.log(formData.get('id'));
     console.log(formData);
 
     this.productService.createProduct(formData).subscribe(

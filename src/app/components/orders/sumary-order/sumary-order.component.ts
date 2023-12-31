@@ -24,7 +24,7 @@ export class SumaryOrderComponent implements OnInit {
   email : string = '';
   address : string ='';
   orderProducts:OrderProduct [] = [];
-  userId : number =1;
+  userId : number =0;
 
   constructor(private cartService:CartService, 
     private userService:UserService, 
@@ -38,6 +38,7 @@ export class SumaryOrderComponent implements OnInit {
     console.log('ngOnInit');
     this.items = this.cartService.convertToListFromMap();
     this.totalCart = this.cartService.totalCart();
+    this.userId = this.sessionStorage.getItem('token').id;
     this.getUserById(this.userId);
   }
 

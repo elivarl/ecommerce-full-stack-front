@@ -1,0 +1,41 @@
+  	<!-- Header User-->
+<app-header-user></app-header-user>  
+  
+  <!-- Page Content -->
+  <div class="container">
+
+    <div class="card mb-3">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h2>Ingresar</h2>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <form (ngSubmit)="login()" >
+      <div class="form-group">
+        <label for="email"> Email:  </label>      
+        <input [(ngModel)]="username" type="email" class="form-control" id="email" name="email" placeholder="Ingrese su email" required autocomplete="off"> 
+
+      </div>
+
+      <div class="form-group">
+        <label for="pwd"> Contraseña:</label>
+        <input [(ngModel)]="password" type="password"  class="form-control" id="password" name="password" placeholder="Ingrese su contraseña" required>       
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-2">
+          <button type="submit" class="btn btn-dark"> <span class="glyphicon glyphicon-ok"></span> Ingresar</button>
+        </div>      
+      </div>    
+    </form>
+    <a href="registro.html" class="card-link">Si aún no tiene cuenta aqui puede registrarse</a>
+  </div>
+  <!-- /.container -->
