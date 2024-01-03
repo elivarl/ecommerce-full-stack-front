@@ -9,13 +9,12 @@ import { SessionStorageService } from './session-storage.service';
   providedIn: 'root'
 })
 export class ProductService {
+  constructor(private httpClient:HttpClient, private headerService : HeaderService ){}
+  
   private apiUrl : string = "http://localhost:8085/api/v1/admin/products";
   
-  
-  constructor(private httpClient:HttpClient, private headerService : HeaderService ){}
 
   getProducts():Observable<Product[]>{
-
     return this.httpClient.get<Product[]>(this.apiUrl, {headers: this.headerService.headers});
   }
 

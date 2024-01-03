@@ -20,6 +20,7 @@ import { PaymentSuccessComponent } from './components/payment-success/payment-su
 import { RegistrationComponent } from './components/authetication/registration/registration.component';
 import { LoginComponent } from './components/authetication/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { authGuard } from './guards/auth.guard';
 
 
 const routes : Routes = [
@@ -31,7 +32,7 @@ const routes : Routes = [
   {path: 'admin/category/add', component:CategoryAddComponent},
   {path: 'admin/category/update/:id', component:CategoryAddComponent},
   {path: 'cart/detailproduct/:id', component:DetailProductComponent},
-  {path: 'cart/sumary', component: SumaryOrderComponent},
+  {path: 'cart/sumary', component: SumaryOrderComponent, canActivate: [authGuard]},
   {path: 'payment/success', component: PaymentSuccessComponent},
   {path: 'user/register', component: RegistrationComponent},
   {path: 'user/login', component: LoginComponent},

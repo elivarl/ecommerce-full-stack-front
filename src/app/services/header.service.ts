@@ -17,7 +17,7 @@ export class HeaderService {
     this.token = this.sessionStorage.getItem('token').token;
     this.headers = new HttpHeaders(
       {
-        //'Content-Type' : 'application/json',
+        ///'Content-Type' : 'application/json',
         'Authorization' : `${this.token}`
 
       }
